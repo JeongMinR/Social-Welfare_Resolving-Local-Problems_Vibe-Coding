@@ -1,0 +1,118 @@
+/* =========================================
+   MindGuard · pattern.css
+   앱 패턴 분석(pattern.html) 전용 스타일
+   ========================================= */
+
+.shell { padding-bottom: 80px; }
+
+/* ── 상단 바 ── */
+.topbar { padding: 14px 20px 0; }
+.topbar-left { font-size: 18px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; }
+.topbar-left span { color: var(--mint); }
+
+/* ── 탭 ── */
+.tabs { display: flex; gap: 6px; padding: 16px 20px 0; }
+.tab {
+  flex: 1; padding: 9px 0; border-radius: 10px;
+  font-size: 12px; font-weight: 500; text-align: center; cursor: pointer;
+  background: rgba(255,255,255,.04); border: 0.5px solid rgba(255,255,255,.08);
+  color: var(--sub); transition: all .2s;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.tab.active { background: var(--mint-bg); border-color: var(--mint-border); color: var(--mint); }
+
+/* ── 위험 배너 ── */
+.risk-banner {
+  margin: 14px 20px 0; border-radius: 14px; padding: 14px 16px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.risk-low  { background: rgba(34,197,94,.07);  border: 0.5px solid rgba(34,197,94,.25); }
+.risk-mid  { background: rgba(245,158,11,.07); border: 0.5px solid rgba(245,158,11,.25); }
+.risk-high { background: rgba(239,68,68,.07);  border: 0.5px solid rgba(239,68,68,.25); }
+.risk-icon  { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.risk-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.risk-desc  { font-size: 11px; color: var(--sub); line-height: 1.65; }
+.risk-score-pill {
+  display: inline-block; margin-top: 6px; padding: 3px 10px;
+  border-radius: 20px; font-size: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+}
+
+/* ── 섹션 ── */
+.section { padding: 16px 20px 0; }
+.section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.section-sub { font-size: 10px; color: var(--sub); }
+
+/* ── 앱 카드 ── */
+.app-card {
+  background: var(--card); border: 0.5px solid rgba(255,255,255,.08);
+  border-radius: 14px; padding: 14px 16px; margin-bottom: 10px;
+  cursor: pointer; transition: border-color .2s;
+}
+.app-card:hover { border-color: rgba(255,255,255,.18); }
+.app-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.app-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; flex-shrink: 0;
+}
+.app-meta { flex: 1; }
+.app-name     { font-size: 13px; font-weight: 500; }
+.app-category { font-size: 10px; color: var(--sub); margin-top: 1px; }
+.app-right    { text-align: right; }
+.app-today    { font-size: 15px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+.app-avg      { font-size: 10px; color: var(--sub); margin-top: 1px; }
+.app-delta    { font-size: 10px; font-weight: 600; margin-top: 2px; }
+.delta-up   { color: var(--danger); }
+.delta-down { color: var(--safe); }
+.delta-norm { color: var(--sub); }
+
+/* 스파크라인 */
+.sparkline-wrap { height: 36px; position: relative; }
+.bar-row { display: flex; align-items: flex-end; gap: 3px; height: 100%; }
+.mini-bar { flex: 1; border-radius: 3px 3px 0 0; min-height: 3px; }
+
+/* 이상 태그 */
+.anomaly-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; padding: 3px 8px; border-radius: 20px; margin-top: 6px;
+}
+.tag-high { background: rgba(239,68,68,.12);  color: var(--danger); border: 0.5px solid rgba(239,68,68,.25); }
+.tag-low  { background: rgba(129,100,248,.12);color: var(--purple); border: 0.5px solid rgba(129,100,248,.25); }
+.tag-norm { background: rgba(34,197,94,.10);  color: var(--safe);   border: 0.5px solid rgba(34,197,94,.2); }
+
+/* ── 행동 종합 지표 ── */
+.behavior-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.beh-card { background: var(--card); border: 0.5px solid rgba(255,255,255,.07); border-radius: 12px; padding: 12px; }
+.beh-label { font-size: 10px; color: var(--sub); margin-bottom: 4px; }
+.beh-val   { font-size: 18px; font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+.beh-trend { font-size: 10px; margin-top: 2px; }
+
+/* ── 히트맵 ── */
+.heatmap-row { display: flex; gap: 4px; margin-top: 6px; }
+.hm-day {
+  flex: 1; border-radius: 8px; height: 48px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+}
+
+/* ── 상세 패널 ── */
+.detail-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.6); z-index: 200;
+  display: none; align-items: flex-end; justify-content: center;
+}
+.detail-overlay.open { display: flex; }
+.detail-sheet {
+  background: #1a2438; border-radius: 20px 20px 0 0;
+  padding: 20px 20px 32px; width: 100%; max-width: 440px;
+  max-height: 85vh; overflow-y: auto;
+}
+.sheet-drag {
+  width: 36px; height: 3px; background: rgba(255,255,255,.15);
+  border-radius: 2px; margin: 0 auto 16px;
+}
+.sheet-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.sheet-sub   { font-size: 12px; color: var(--sub); margin-bottom: 16px; }
+.close-btn {
+  float: right; background: rgba(255,255,255,.07); border: none;
+  border-radius: 8px; padding: 6px 12px; color: var(--sub);
+  cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-size: 12px;
+}

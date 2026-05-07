@@ -1,0 +1,183 @@
+/* =========================================
+   MindGuard · splash.css
+   표지(index.html) 전용 스타일
+   ========================================= */
+
+.shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px 48px;
+}
+
+/* ── 배경 레이어 ── */
+.bg-layer { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+.grid-lines {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(45,212,191,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45,212,191,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glow-center {
+  position: absolute; top: 38%; left: 50%; transform: translate(-50%,-50%);
+  width: 340px; height: 340px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,212,191,.13) 0%, rgba(14,165,233,.07) 40%, transparent 70%);
+}
+.glow-top {
+  position: absolute; top: -60px; right: -40px;
+  width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,100,248,.1) 0%, transparent 65%);
+}
+.glow-bot {
+  position: absolute; bottom: -60px; left: -40px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,212,191,.08) 0%, transparent 65%);
+}
+
+/* 회전 링 */
+.ring {
+  position: absolute; border-radius: 50%; border: 0.5px solid; pointer-events: none;
+  top: 18%; left: 50%;
+}
+.ring1 { width:320px; height:320px; border-color:rgba(45,212,191,.1);  transform:translateX(-50%); animation:spin 28s linear infinite; }
+.ring2 { width:220px; height:220px; border-color:rgba(14,165,233,.12); transform:translateX(-50%); animation:spin 18s linear infinite reverse; }
+.ring3 { width:130px; height:130px; border-color:rgba(129,100,248,.15);transform:translateX(-50%); animation:spin 10s linear infinite; }
+
+/* 파티클 */
+.particles { position: absolute; inset: 0; }
+.particle {
+  position: absolute; border-radius: 50%;
+  animation: floatP var(--dur, 8s) ease-in-out infinite var(--delay, 0s);
+}
+@keyframes floatP {
+  0%,100% { transform: translateY(0) scale(1);   opacity: var(--op, .4); }
+  50%     { transform: translateY(-18px) scale(1.2); opacity: calc(var(--op,.4)*1.6); }
+}
+
+/* ── 상태 바 ── */
+.status-bar {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  padding-top: 16px; font-size: 11px; color: var(--sub);
+  font-family: 'Space Grotesk', sans-serif; position: relative; z-index: 2;
+}
+.status-city { font-size: 10px; letter-spacing: .5px; color: rgba(100,116,139,.5); }
+
+/* 대회 배지 */
+.daegu-badge {
+  position: absolute; top: 20px; right: 0; z-index: 3;
+  background: rgba(129,100,248,.1); border: 0.5px solid rgba(129,100,248,.2);
+  border-radius: 8px 0 0 8px; padding: 4px 10px;
+  font-size: 9px; color: #a78bfa; letter-spacing: .5px; font-weight: 600;
+}
+
+/* ── 히어로 ── */
+.hero {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  position: relative; z-index: 2; margin-top: auto; padding-top: 60px;
+}
+
+/* 로고 마크 */
+.logo-mark { position: relative; width: 88px; height: 88px; margin-bottom: 28px; }
+.logo-ring-outer {
+  position: absolute; inset: 0; border-radius: 50%;
+  border: 1.5px solid rgba(45,212,191,.3);
+  animation: spin 12s linear infinite;
+}
+.logo-ring-inner {
+  position: absolute; inset: 12px; border-radius: 50%;
+  border: 1px solid rgba(14,165,233,.25);
+  animation: spin 7s linear infinite reverse;
+}
+.logo-core {
+  position: absolute; inset: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(45,212,191,.2), rgba(14,165,233,.15));
+  border: 1px solid rgba(45,212,191,.35);
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-icon { font-size: 22px; }
+.logo-dot-outer {
+  position: absolute; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--mint);
+  top: 50%; left: 50%;
+  animation: orbitDot 4s linear infinite;
+}
+@keyframes orbitDot {
+  from { transform: translate(-50%,-50%) rotate(0deg)   translateX(38px) rotate(0deg); }
+  to   { transform: translate(-50%,-50%) rotate(360deg) translateX(38px) rotate(-360deg); }
+}
+
+.app-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px; font-weight: 700;
+  line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 6px;
+}
+.app-name .highlight {
+  background: linear-gradient(90deg, #2dd4bf, #38bdf8);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.app-name-kr {
+  font-size: 13px; font-weight: 300; color: var(--sub);
+  letter-spacing: 3px; margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 14px; color: rgba(241,245,249,.55);
+  line-height: 1.75; max-width: 270px; font-weight: 300; margin-bottom: 32px;
+}
+.tagline strong { color: rgba(241,245,249,.85); font-weight: 500; }
+
+/* 피처 필 */
+.feature-pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+.pill {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.04); border: 0.5px solid rgba(255,255,255,.09);
+  border-radius: 20px; padding: 5px 12px; font-size: 11px; color: var(--sub);
+}
+.pill-dot { width: 5px; height: 5px; border-radius: 50%; }
+
+/* ── 하단 영역 ── */
+.bottom-area {
+  width: 100%; position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  margin-top: auto; padding-top: 36px;
+}
+
+.cta-btn {
+  display: block; width: 100%; padding: 17px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2dd4bf 0%, #0ea5e9 100%);
+  color: #0f172a; text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  position: relative; overflow: hidden;
+  transition: transform .18s, box-shadow .18s;
+}
+.cta-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.15), transparent);
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(45,212,191,.3); }
+.cta-btn-sub { font-size: 11px; opacity: .65; margin-top: 2px; font-weight: 400; }
+
+.secondary-btn {
+  display: block; width: 100%; padding: 13px;
+  border-radius: 14px; border: 0.5px solid rgba(255,255,255,.1);
+  background: transparent; color: var(--sub);
+  font-family: 'Noto Sans KR', sans-serif; font-size: 13px;
+  text-align: center; cursor: pointer; transition: all .2s;
+}
+.secondary-btn:hover { background: rgba(255,255,255,.04); color: var(--text); }
+
+.privacy-note {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 10px; color: rgba(100,116,139,.7);
+}
+
+.version-tag {
+  font-family: 'Space Grotesk', sans-serif; font-size: 9px;
+  color: rgba(100,116,139,.4); letter-spacing: 1px;
+}
